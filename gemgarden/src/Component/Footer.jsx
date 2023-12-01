@@ -13,6 +13,8 @@ import {
   Image,
   Flex
 } from '@chakra-ui/react';
+
+
 import { ReactNode } from 'react';
 import { FaInstagram, FaTwitter, FaYoutube , FaPinterest } from 'react-icons/fa';
 import { BiMailSend } from 'react-icons/bi';
@@ -93,6 +95,7 @@ export default function Footer() {
           <Stack spacing={6}>
             <Box >
               {/* <Logo color={useColorModeValue('gray.700', 'white')} /> */}
+              
               <Flex alignItems={"center"}>
                <Text fontWeight={"600"} fontSize={"25px"}>GEM GARDEN</Text>
               <Box w="100px">
