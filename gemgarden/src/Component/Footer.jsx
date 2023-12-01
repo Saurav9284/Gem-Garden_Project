@@ -93,6 +93,7 @@ export default function Footer() {
           <Stack spacing={6}>
             <Box >
               {/* <Logo color={useColorModeValue('gray.700', 'white')} /> */}
+              
               <Flex alignItems={"center"}>
                <Text fontWeight={"600"} fontSize={"25px"}>GEM GARDEN</Text>
               <Box w="100px">
