@@ -83,7 +83,7 @@ export default function Footer() {
       // bg={useColorModeValue('gray.50', 'gray.900')}
       // color={useColorModeValue('gray.700', 'gray.200')}
 
-      
+
      color="#FFFFFF"
       >
       <Container as={Stack} maxW={'6xl'} py={10}>
@@ -125,7 +125,6 @@ export default function Footer() {
             {/* <Link href={'#'}>Testimonials</Link> */}
           </Stack>
           <Stack color={"#a0a0a0"} fontWeight={"400"} fontSize={"15px"} lineHeight={"30px"}  align={'flex-start'}>
-            {/* <ListHeader>Rings</ListHeader> */}
             <Link href={'#'}>Rings</Link>
             <Link href={'#'}>Bracelets</Link>
             <Link href={'#'}>Earring</Link>
