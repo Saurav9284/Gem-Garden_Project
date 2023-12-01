@@ -14,6 +14,7 @@ import {
   Flex
 } from '@chakra-ui/react';
 
+
 import { ReactNode } from 'react';
 import { FaInstagram, FaTwitter, FaYoutube , FaPinterest } from 'react-icons/fa';
 import { BiMailSend } from 'react-icons/bi';
