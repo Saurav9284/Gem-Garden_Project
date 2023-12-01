@@ -14,7 +14,6 @@ const Navbar = () => {
   // ]
 
   const naviagte = useNavigate();
-
   const handlelogo = () => {
     naviagte("/")
     console.log("Clicked")
