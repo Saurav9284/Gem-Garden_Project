@@ -146,6 +146,26 @@ const Navbar = () => {
 
       {/* Mobile Menu Toggle */}
       <Flex display={{ base: 'flex', md: 'none' }} alignItems="center">
+
+      <InputGroup ml={4} marginRight="20px">
+          <Input
+            type="text"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <InputRightElement width="4.5rem">
+            <Button
+              h="1.75rem"
+              size="sm"
+              onClick={handleSearch}
+              _hover={{ background: '#E5A639', color: 'black' }}
+            >
+              Search
+            </Button>
+          </InputRightElement>
+        </InputGroup>
+        
         <IconButton
           icon={<HiMenu />}
           fontSize="30px"
