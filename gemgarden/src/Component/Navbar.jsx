@@ -1,50 +1,219 @@
-import { Link } from '@chakra-ui/react'
-import React from 'react'
-import logo from '../Assets/GemGardenLogo2.png'
-import { useNavigate } from 'react-router-dom'
+import { Link } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import {
+  Input,
+  InputGroup,
+  InputRightElement,
+  Button,
+  Box,
+  Flex,
+  VStack,
+  IconButton,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerHeader,
+  DrawerBody,
+  useDisclosure,
+  Icon,
+} from '@chakra-ui/react';
+import { HiMenu } from 'react-icons/hi';
+import { BiSearch, BiShoppingBag, BiMessageRounded, BiLogIn, BiUser, BiHeadphone } from 'react-icons/bi';
+import logo from '../Assets/GemGardenLogo2.png';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [searchTerm, setSearchTerm] = useState('');
 
-  // const Links = [
-  //   {title:"Jwellary", path:"/jwellary"},
-  //   {title:"Rings", path:"/rings"},
-  //   {title:"Login", path:"/login"},
-  //   {title:"Contact", path:"#"},
-  //   {title:"Bag", path:"/cart"},
-  // ]
+  const handleLogo = () => {
+    navigate('/');
+    onClose();
+  };
 
-  const naviagte = useNavigate();
-  const handlelogo = () => {
-    naviagte("/")
-    console.log("Clicked")
-  }
-  const handlelogin = () => {
-    naviagte("/login")
-    console.log("Clicked")
-  }
+  const handleLogin = () => {
+    navigate('/login');
+    onClose();
+  };
+
   const handleProduct = () => {
-    naviagte("/product")
-    console.log("Clicked")
-  }
+    navigate('/product');
+    onClose();
+  };
+
   const handleCart = () => {
-    naviagte("/cart")
-  }
+    navigate('/cart');
+    onClose();
+  };
+
+  const handleSearch = () => {
+    console.log('Searching for:', searchTerm);
+  };
+
+  const toggleMobileMenu = () => {
+    onOpen();
+  };
 
   return (
-    <div id='navbar' style={{height: "10%", backgroundColor:"#262425",
-     color:"white", fontFamily:"sans-serif",cursor:"pointer",
-      justifyContent:"space-around", display:"flex", padding:"20px", alignItems:"center"}}>
-       <div>
-        <img src={logo} width="20%" onClick={handlelogo}/>
-        </div> 
-       <Link key={"/jwellary"} to={"/jwellary"}onClick={handleProduct}>Jewelery</Link>
-       <Link key={"/rings"} to={"/rings"}onClick={handleProduct}>Gifts</Link>
-       <Link key={"/login"} to={"/login"} onClick={handlelogin}>Login</Link>
-       <Link key={"#"} to={"#"}>Contact</Link>
-       <Link key={"/cart"} to={"/cart"}onClick={handleCart}>Bag</Link>
-      
-    </div>
-  )
-}
+    <Box
+      as="nav"
+      p={4}
+      backgroundColor="#262425"
+      color="white"
+      display="flex"
+      justifyContent="space-between"
+      alignItems="center"
+      position="relative"
+      fontWeight="bold"
+    >
+      <Box>
+        <img src={logo} width="100px" alt="Logo" onClick={handleLogo} style={{cursor:"pointer"}} />
+      </Box>
 
-export default Navbar
+      {/* Desktop Menu */}
+      <Box display={{ base: 'none', md: 'flex' }} alignItems="center">
+        <Link
+          key="/jewelry"
+          to="/jewelry"
+          onClick={handleProduct}
+          mx={4}
+          _hover={{ color: '#E5A639' }}
+          
+        >
+          Jewelry
+        </Link>
+        <Link
+          key="/jewelry"
+          to="/jewelry"
+          onClick={handleProduct}
+          mx={4}
+          _hover={{ color: '#E5A639' }}
+          
+        >
+          Rings
+        </Link>
+        <Link
+          key="/rings"
+          to="/rings"
+          onClick={handleProduct}
+          mx={4}
+          _hover={{ color: '#E5A639' }}
+        >
+          Gifts
+        </Link>
+        <InputGroup ml={4}>
+          <Input
+            type="text"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <InputRightElement width="4.5rem">
+            <Button
+              h="1.75rem"
+              size="sm"
+              onClick={handleSearch}
+              _hover={{ background: '#E5A639', color: 'black' }}
+            >
+              Search
+            </Button>
+          </InputRightElement>
+        </InputGroup>
+        <Link
+          key="/login"
+          to="/login"
+          onClick={handleLogin}
+          mx={4}
+          _hover={{ color: '#E5A639' }}
+        >
+          <Icon as={BiUser} boxSize={6}/>
+        </Link>
+        <Link key="#" to="#" mx={4} _hover={{ color: '#E5A639' }}>
+        <Icon as={BiHeadphone} boxSize={6}/>
+        </Link>
+        <Link
+          key="/cart"
+          to="/cart"
+          onClick={handleCart}
+          mx={4}
+          _hover={{ color: '#E5A639' }}
+        >
+          <Icon as={BiShoppingBag} boxSize={6}/>
+        </Link>
+      </Box>
+
+      {/* Mobile Menu Toggle */}
+      <Flex display={{ base: 'flex', md: 'none' }} alignItems="center">
+        <IconButton
+          icon={<HiMenu />}
+          fontSize="30px"
+          color="white"
+          aria-label="Toggle mobile menu"
+          onClick={toggleMobileMenu}
+          bgColor="transparent"
+          _hover={{ bgColor: 'transparent' }}
+        />
+        {/* Mobile Menu */}
+        <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
+          <DrawerOverlay>
+            <DrawerContent>
+              <DrawerCloseButton />
+              <DrawerHeader>Menu</DrawerHeader>
+              <DrawerBody>
+                <VStack spacing={4}>
+                  <Link
+                    key="/jewelry"
+                    to="/jewelry"
+                    onClick={handleProduct}
+                    _hover={{ color: '#E5A639' }}
+                  >
+                    Jewelry
+                  </Link>
+                  <Link
+                    key="/rings"
+                    to="/rings"
+                    onClick={handleProduct}
+                    _hover={{ color: '#E5A639' }}
+                  >
+                    Gifts
+                  </Link>
+                  <Link
+                    key="/rings"
+                    to="/rings"
+                    onClick={handleProduct}
+                    _hover={{ color: '#E5A639' }}
+                  >
+                    Rings
+                  </Link>
+                  <Link
+                    key="/login"
+                    to="/login"
+                    onClick={handleLogin}
+                    _hover={{ color: '#E5A639' }}
+                  >
+                    Login
+                  </Link>
+                  <Link key="#" to="#" _hover={{ color: '#E5A639' }}>
+                    Contact
+                  </Link>
+                  <Link
+                    key="/cart"
+                    to="/cart"
+                    onClick={handleCart}
+                    _hover={{ color: '#E5A639' }}
+                  >
+                    Cart
+                  </Link>
+                </VStack>
+              </DrawerBody>
+            </DrawerContent>
+          </DrawerOverlay>
+        </Drawer>
+      </Flex>
+    </Box>
+  );
+};
+
+export default Navbar;
