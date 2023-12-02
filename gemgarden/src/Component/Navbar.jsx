@@ -64,17 +64,22 @@ const Navbar = () => {
   };
 
   return (
+    
     <Box
-      as="nav"
-      p={4}
-      backgroundColor="#262425"
-      color="white"
-      display="flex"
-      justifyContent="space-between"
-      alignItems="center"
-      position="relative"
-      fontWeight="bold"
-    >
+  as="nav"
+  p={4}
+  backgroundColor="#262425"
+  color="white"
+  display="flex"
+  justifyContent="space-between"
+  alignItems="center"
+  fontWeight="bold"
+  position="fixed"
+  width="100%"
+  top="0"
+  zIndex="1000"
+  boxShadow="0 2px 4px rgba(0,0,0,0.1)"
+>
       <Box>
         <img src={logo} width="100px" alt="Logo" onClick={handleLogo} style={{cursor:"pointer"}} />
       </Box>
@@ -89,7 +94,7 @@ const Navbar = () => {
           _hover={{ color: '#E5A639' }}
           
         >
-          Jewelry
+          Jewelery
         </Link>
         <Link
           key="/jewelry"
