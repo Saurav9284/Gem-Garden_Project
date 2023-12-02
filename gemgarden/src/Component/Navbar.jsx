@@ -1,6 +1,7 @@
 import { Link } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import {
   Input,
   InputGroup,
@@ -19,8 +20,9 @@ import {
   useDisclosure,
   Icon,
 } from '@chakra-ui/react';
+
 import { HiMenu } from 'react-icons/hi';
-import {  BiShoppingBag, BiUser, BiHeadphone } from 'react-icons/bi';
+import {  BiShoppingBag, BiUser, BiHeadphone, BiSearch } from 'react-icons/bi';
 import logo from '../Assets/GemGardenLogo2.png';
 
 const Navbar = () => {
@@ -64,35 +66,34 @@ const Navbar = () => {
   };
 
   return (
-    
     <Box
-  as="nav"
-  p={4}
-  backgroundColor="#262425"
-  color="white"
-  display="flex"
-  justifyContent="space-between"
-  alignItems="center"
-  fontWeight="bold"
-  position="fixed"
-  width="100%"
-  top="0"
-  zIndex="1000"
-  boxShadow="0 2px 4px rgba(0,0,0,0.1)"
->
+      as="nav"
+      p={4}
+      backgroundColor="#262425"
+      color="white"
+      display="flex"
+      justifyContent="space-between"
+      margin="auto"
+      alignItems="center"
+      fontWeight="bold"
+      position="sticky"
+      width="100%"
+      top="0"
+      zIndex="1000"
+      boxShadow="0 2px 4px rgba(0,0,0,0.1)"
+    >
       <Box>
         <img src={logo} width="100px" alt="Logo" onClick={handleLogo} style={{cursor:"pointer"}} />
       </Box>
-
+     
       {/* Desktop Menu */}
-      <Box display={{ base: 'none', md: 'flex' }} alignItems="center">
+      <Box display={{ base: 'none', md: 'flex' }} alignItems="center" >
         <Link
           key="/jewelry"
           to="/jewelry"
           onClick={handleProduct}
           mx={4}
           _hover={{ color: '#E5A639' }}
-          
         >
           Jewelery
         </Link>
@@ -115,6 +116,8 @@ const Navbar = () => {
         >
           Gifts
         </Link>
+        {/* <Box style={{base: 'none', md: 'flex',fontFamily:"sans-serif", letterSpacing:"8px", fontSize:"25px"}}>GEM GARDEN</Box> */}
+        {/* <Box display={{ base: 'none', md: 'flex' }} alignItems="center"> */}
         <InputGroup ml={4}>
           <Input
             type="text"
@@ -128,8 +131,9 @@ const Navbar = () => {
               size="sm"
               onClick={handleSearch}
               _hover={{ background: '#E5A639', color: 'black' }}
+              background="#262425"
             >
-              Search
+             <Icon as={BiSearch} boxSize={6} color="white" />
             </Button>
           </InputRightElement>
         </InputGroup>
@@ -163,8 +167,8 @@ const Navbar = () => {
         >
           <Icon as={BiShoppingBag} boxSize={6}/>
         </Link>
-      </Box>
-
+      
+        </Box>
       {/* Mobile Menu Toggle */}
       <Flex display={{ base: 'flex', md: 'none' }} alignItems="center">
 
