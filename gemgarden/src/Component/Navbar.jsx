@@ -20,13 +20,14 @@ import {
   Icon,
 } from '@chakra-ui/react';
 import { HiMenu } from 'react-icons/hi';
-import { BiSearch, BiShoppingBag, BiMessageRounded, BiLogIn, BiUser, BiHeadphone } from 'react-icons/bi';
+import {  BiShoppingBag, BiUser, BiHeadphone } from 'react-icons/bi';
 import logo from '../Assets/GemGardenLogo2.png';
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [searchTerm, setSearchTerm] = useState('');
+  const [isLoggedIn, setLoggedIn] = useState(true);
 
   const handleLogo = () => {
     navigate('/');
@@ -35,6 +36,12 @@ const Navbar = () => {
 
   const handleLogin = () => {
     navigate('/login');
+    onClose();
+  };
+
+  const handleLogout = () => {
+    setLoggedIn(false);
+    navigate("/")
     onClose();
   };
 
@@ -121,7 +128,7 @@ const Navbar = () => {
             </Button>
           </InputRightElement>
         </InputGroup>
-        <Link
+        {/* <Link
           key="/login"
           to="/login"
           onClick={handleLogin}
@@ -129,6 +136,15 @@ const Navbar = () => {
           _hover={{ color: '#E5A639' }}
         >
           <Icon as={BiUser} boxSize={6}/>
+        </Link> */}
+         <Link
+          key="/login"
+          to="/login"
+          onClick={isLoggedIn ? handleLogout : handleLogin}
+          mx={4}
+          _hover={{ color: '#E5A639' }}
+        >
+          {isLoggedIn ? <Button h="1.75rem" size="sm"_hover={{ background: '#E5A639', color: 'black' }}>Logout</Button> : <Icon as={BiUser} boxSize={6}/>}
         </Link>
         <Link key="#" to="#" mx={4} _hover={{ color: '#E5A639' }}>
         <Icon as={BiHeadphone} boxSize={6}/>
@@ -208,13 +224,14 @@ const Navbar = () => {
                     Rings
                   </Link>
                   <Link
-                    key="/login"
+                   key="/login"
                     to="/login"
-                    onClick={handleLogin}
-                    _hover={{ color: '#E5A639' }}
-                  >
-                    Login
-                  </Link>
+                    onClick={isLoggedIn ? handleLogout : handleLogin}
+                     mx={4}
+                       _hover={{ color: '#E5A639' }}
+                        >
+                     {isLoggedIn ? 'Logout' : 'Login'}
+                   </Link>
                   <Link key="#" to="#" _hover={{ color: '#E5A639' }}>
                     Contact
                   </Link>
@@ -237,3 +254,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
