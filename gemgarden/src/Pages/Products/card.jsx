@@ -9,17 +9,14 @@ export const Card = ({ele}) => {
   const token = localStorage.getItem("user-token") || "";
   const {src1,src2,currentprice,orignalprice,name,material,video,src3,id} = ele
   const toast = useToast()
-  // console.log(src1)
   const [cartData,setCartData] = useState({})
   const {errmsg,addcartmsg} = useSelector(store=>store.cartReducer)
 
    const dispatch = useDispatch()
 
   const handleAddProduct = () => {
-    // console.log(ele)
     dispatch(addToCartProduct(token,ele))
   }
-  // console.log(cartData)
 
   useEffect(()=>{
     if(addcartmsg){
@@ -54,7 +51,6 @@ export const Card = ({ele}) => {
         <Text style={{fontSize:"0.8rem"}} className='price'>Rs.{currentprice}.00 <span style={{color:"red",verticalAlign:"middle",textDecoration: "line-through"}}  >(Rs.{orignalprice})</span></Text>
         <Button style={{backgroundColor:"#C7A550",color:"white"}}>Add To Cart</Button>
         </Link>
-        {/* <ToastStatusExample/> */}
         </DIV>
   )
 }

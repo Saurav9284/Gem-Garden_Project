@@ -12,13 +12,13 @@ export const Sidebarfilter = () => {
 
   function handleCategory(e) {
     const { value } = e.target;
-    let Category = [...material];
-    if (Category.includes(value)) {
-      Category = Category.filter((ele) => ele !== value);
+    let category = [...material];
+    if (category.includes(value)) {
+      category = category.filter((ele) => ele !== value);
     } else {
-      Category.push(value);
+      category.push(value);
     }
-    setMaterial(Category);
+    setMaterial(category);
   }
   function handleOrder(e) {
     setOrder(e.target.value);
@@ -128,6 +128,6 @@ const DIV = styled.div`
 
   input,
   label {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 `;

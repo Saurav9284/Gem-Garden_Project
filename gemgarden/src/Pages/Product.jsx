@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Card } from "./Products/card";
 import styled from "@emotion/styled";
 import { useSearchParams } from "react-router-dom";
-import { Sidebarfilter } from "./PRODUCTS/Sidebarprod";
+import { Sidebarfilter } from "./Products/Sidebar";
 import { Button } from "@chakra-ui/react";
 
 export const Product = () => {
