@@ -1,8 +1,11 @@
 import React from "react";
 import { getProducts } from "../Redux/Products/action";
+
 import { useDispatch, useSelector } from "react-redux";
+// import { Dispatch } from "redux";
 import { Card } from "./Products/card";
 import styled from "@emotion/styled";
+
 import { useSearchParams } from "react-router-dom";
 import { Sidebarfilter } from "./Products/Sidebar";
 import { Button } from "@chakra-ui/react";
@@ -10,23 +13,31 @@ import { Button } from "@chakra-ui/react";
 export const Product = () => {
   const arrivalData = useSelector((store) => store.productReducer.products);
   const DataPages = useSelector((store) => store.productReducer.totalpages);
+  // console.log(DataPages)
   const page = new Array(Math.ceil(DataPages / 10)).fill(0);
+  // console.log(page);
   const [pages, setPages] = React.useState(1);
 
   const [searchParams] = useSearchParams();
   let obj = {
     params: {
       material: searchParams.getAll("material"),
+      // type: searchParams.getAll("type"),
       _sort: "currentprice",
       _order: searchParams.get("order"),
     },
   };
   const dispatch = useDispatch();
+  // function handlePage(page:number){
+  //   setPages(page)
+  // }  
   React.useEffect(() => {
+    // dispatch(getProducts())
     dispatch(getProducts(obj, pages));
   }, [searchParams, pages]);
   return (
     <DIV className="body">
+      {/* <Sidebarprod/> */}
       <Sidebarfilter />
       <div className="mainBody">
         <div className="productcards">
@@ -126,3 +137,28 @@ const DIV = styled.div`
     }
   }
 `;
+
+// import { getData } from "../Redux/RecipeReducer/action";
+// import { RecipeCard } from "./RecipeCard";
+// import styled from "styled-components";
+
+// export const RecipeList = () => {
+
+//   return (
+//     <div>
+//       <DIV data-testid="recipe-list">
+//         {/* Map through the recipe using the recipe card here */}
+//         {recipe.map((ele) => (
+//           <RecipeCard key={ele.id} ele={ele} />
+//         ))}
+//       </DIV>
+//     </div>
+//   );
+// };
+
+// const DIV = styled.div`
+//   display: grid;
+//   grid-template-columns: auto auto auto;
+//   padding: 12px;
+//   grid-gap: 12px;
+// `;

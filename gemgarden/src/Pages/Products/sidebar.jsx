@@ -2,23 +2,26 @@ import { Text } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+// import styled from "styled-components";
 
 export const Sidebarfilter = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialCategory = searchParams.getAll("category");
+  // const initialType= searchParams.getAll("type");
   const initialOrder = searchParams.getAll("order");
-  const [material, setMaterial] = useState(initialCategory || []);
+  const [material, setCategory] = useState(initialCategory || []);
+  // const [type, setType] = useState(initialType|| []);
   const [order, setOrder] = useState(initialOrder || "");
 
   function handleCategory(e) {
     const { value } = e.target;
-    let category = [...material];
-    if (category.includes(value)) {
-      category = category.filter((ele) => ele !== value);
+    let newCategory = [...material];
+    if (newCategory.includes(value)) {
+      newCategory = newCategory.filter((ele) => ele !== value);
     } else {
-      category.push(value);
+      newCategory.push(value);
     }
-    setMaterial(category);
+    setCategory(newCategory);
   }
   function handleOrder(e) {
     setOrder(e.target.value);
@@ -27,6 +30,7 @@ export const Sidebarfilter = () => {
   useEffect(() => {
     let params = {
       material,
+      // type,
       order,
     };
     order && (params.order = order);
@@ -57,6 +61,7 @@ export const Sidebarfilter = () => {
           />
           <label>Pearl</label>
           <br />
+          {/* <br /> */}
           <input
             onChange={handleCategory}
             data-testid="recipe-chinese"
@@ -66,6 +71,7 @@ export const Sidebarfilter = () => {
           />
           <label>Gold</label>
           <br />
+          {/* <br /> */}
           <input
             onChange={handleCategory}
             data-testid="recipe-thai"
@@ -75,6 +81,7 @@ export const Sidebarfilter = () => {
           />
           <label>Gemstone</label>
           <br />
+          {/* <br /> */}
           <input
             onChange={handleCategory}
             data-testid="recipe-thai"
@@ -87,6 +94,30 @@ export const Sidebarfilter = () => {
         </div>
       </div>
       <br />
+      {/* <br /> */}
+      {/* <h3>Veg / Non-Veg</h3>
+      <div>
+        <input
+          onChange={handleType}
+          value={"veg"}
+          data-testid="recipe-veg"
+          type="checkbox"
+          checked={type.includes("veg")}
+        />
+        <label>Veg</label>
+        <br />
+        <br />
+        <input
+          onChange={handleType}
+          value={"non-veg"}
+          data-testid="recipe-non-veg"
+          type="checkbox"
+          checked={type.includes("non-veg")}
+        />
+        <label>Non Veg</label>
+      </div> */}
+      {/* <br /> */}
+      {/* <br /> */}
       <br />
       <div>
         <Text fontSize={"1.5rem"} color={"#886305"}>
@@ -101,6 +132,7 @@ export const Sidebarfilter = () => {
             name="sort"
           />
           <label>Ascending</label>
+          {/* <br /> */}
           <br />
           <input
             defaultChecked={order === "desc"}
@@ -128,6 +160,6 @@ const DIV = styled.div`
 
   input,
   label {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 `;
