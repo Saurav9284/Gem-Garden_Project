@@ -1,18 +1,18 @@
 import { Box ,Text,Flex, Button,Image,Stack,Input, Table,Thead,Tbody,Tr,Th,Td,TableContainer,useBreakpointValue} from "@chakra-ui/react"
 import {ArrowBackIcon,InfoOutlineIcon,AddIcon,MinusIcon} from '@chakra-ui/icons'
 import { useEffect, useState } from "react"
-import {useDispatch} from "react-redux";
+import {useDispatch,useSelector} from "react-redux";
 import {decreaseQty,increaseQty} from "../Redux/cart_page/action"
 import {useNavigate} from "react-router-dom"
 import {getCartItems} from "../Redux/cart_page/action"
-
+import { store} from "../Redux/store";
 export default function Cart(){
-//     const navigate = useNavigate();
-
-
-// const goBack = () => {
-//     navigate(-1); // Go back to the previous page
-// };
+    const navigate = useNavigate();
+    const token=useSelector((store)=>store.authReducer.token);
+console.log(token);
+const goBack = () => {
+    navigate(-1); // Go back to the previous page
+};
     const[qty,setQty] =useState(1);
     const [totalprice,setTotalprice]=useState(0)
      const dispatch=useDispatch();
