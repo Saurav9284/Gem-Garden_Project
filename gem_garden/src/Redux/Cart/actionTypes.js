@@ -1,7 +1,0 @@
-export const CART_REQUEST = "CART_REQUEST"
-export const CART_FAILURE = "CART_FAILURE"
-export const AUTH_ERROR = "AUTH_ERROR"
-export const GETCART="GETCART"
-export const UPDATECART="UPDATECART"
-export const ADDTOCART="ADDTOCART"
-export const DELETECART="DELETECART"
