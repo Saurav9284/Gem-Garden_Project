@@ -1,1 +1,0 @@
-"use strict";new RegExp(".*.(vue|vuex).ai").test(top.location.href)||self!==top&&document.getElementById("app").remove();
