@@ -1,4 +1,4 @@
 *.js linguist-detectable=true
 *.jsx linguist-detectable=true
-*.html linguist-detectable=true
+*.min.html linguist-vendored=true
 *.css linguist-detectable=true
