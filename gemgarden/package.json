@@ -1,4 +1,5 @@
 {
+  "Homepage": ".",
   "name": "gem_garden",
   "version": "0.1.0",
   "private": true,
@@ -15,6 +16,7 @@
     "framer-motion": "^10.12.16",
     "i": "^0.3.7",
     "json-server": "^0.17.4",
+    "netlify": "^13.1.11",
     "npm": "^9.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
