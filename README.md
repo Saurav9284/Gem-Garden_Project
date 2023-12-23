@@ -10,15 +10,15 @@ we learned a lot while working on this project. we failed so many times and we n
 
 **Team-Members.**
 
-Saurav Chavan. 
+1) Saurav Chavan. 
 
-Rishita Mukherjee.
+2) Rishita Mukherjee.
 
-Srudhi P G.
+3) Srudhi P G.
 
-Kratika Jharbade.
+4) Kratika Jharbade.
 
-Amrit chandra kumar
+5) Amrit chandra kumar
 
 **In the construct week.**
 
